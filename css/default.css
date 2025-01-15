@@ -1,0 +1,104 @@
+﻿@keyframes backgroundAnimation {
+    0% {
+      background: linear-gradient(to right, #ffcccc, #ffeb99); /* Başlangıç kırmızımsı ve açık sarıya */
+    }
+    50% {
+      background: linear-gradient(to right, #ffeb99, #ffff99); /* Orta nokta, açık sarıya kayar */
+    }
+    100% {
+      background: linear-gradient(to right, #ffff99, #ffcccc); /* Son, sarıdan kırmızımsı tonlara döner */
+    }
+  }
+  
+  /* Arka plan animasyonunu body veya #mainDiv'e uygularız */
+  body {
+    animation: backgroundAnimation 10s infinite alternate; /* 10 saniye süreyle döngüsel animasyon */
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    overflow: auto;
+    height: 100vh;  /* Yüksekliği tam ekran yapıyoruz */
+  }
+  
+  /* Alternatif olarak, #mainDiv'e uygulayabilirsiniz: */
+  #mainDiv {
+    animation: backgroundAnimation 10s infinite alternate;
+    width: 100%;
+    height: 100%;
+  }
+#mainDiv{width:100%;height:100%}
+#loveHeart{float:left;width:670px;height:625px}
+#garden{width:100%;height:100%}
+#elapseClock{text-align:right;font-size:18px;margin-top:10px;margin-bottom:10px}
+#words{font-family:"sans-serif";width:500px;font-size:24px;color:#666}
+#messages{display:none;text-align: center;font-size: 30px}
+#elapseClock .digit{font-family:"digit";font-size:40px;text-align: center;}
+#loveu{padding:5px;font-size:22px;margin-top:80px;margin-right:120px;text-align:right;display:none}
+#loveu .signature{margin-top:10px;font-size:20px;font-style:italic}
+#clickSound{display:none}
+#code{float:left;width:440px;height:400px;color:#333;font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";font-size:12px}
+#code .string{color:#2a36ff}
+#code .keyword{color:#7f0055;font-weight:bold}
+#code .placeholder{margin-left:15px}#code .space{margin-left:7px}
+#code .comments{color:#3f7f5f}
+#copyright{margin-top:10px;text-align:center;width:100%;color:#666}
+#errorMsg{width:100%;text-align:center;font-size:24px;position:absolute;top:100px;left:0}
+#copyright a{color:#666}
+#icon{font-size: 60px;color: rgb(251, 194, 8);margin: 50 px; align-content: center;}
+#heartspan{align-content: center;text-align: center;margin: 20px;}
+#specialText { font-size: 40px; /* Burada yazı boyutunu istediğiniz değere ayarlayın */}
+/* Kalp şeklinde kırpma ve popup için stiller */
+#popupImage {
+    display: none; /* Başlangıçta görünmez */
+    position: fixed; /* Ekranda sabit bir şekilde duracak */
+    top: 1%; /* Ekranın ortasına hizalanacak */
+    left: 10%;
+    transform: translate(-50%, -50%); /* Tam olarak merkezle */
+    width: 1000px; /* Görselin genişliği */
+    height: 1000px; /* Görselin yüksekliği */
+    clip-path: polygon(50% 0%, 61% 15%, 75% 30%, 75% 50%, 61% 65%, 50% 80%, 39% 65%, 25% 50%, 25% 30%, 39% 15%);
+    transition: transform 1.9s ease-in-out, opacity 1.9s ease-in-out; /* Animasyon için geçiş */
+    z-index: 9999; /* Diğer içeriklerin üstünde görünsün */
+    opacity: 0; /* Başlangıçta şeffaf */
+    background-color: white; /* Görselin arka planını beyaz yapalım */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); /* Gölgelendirme efekti */
+    border-radius: 800px; /* Kenarları yuvarlaklaştırmak için */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  #popupImage img {
+    max-width: 100%; /* Görselin genişliğini sınırlıyoruz */
+    max-height: 100%; /* Görselin yüksekliğini sınırlıyoruz */
+  }
+  
+  /* Görselin arka planında opaklık ekleyebiliriz */
+  #popupOverlay {
+    display: none; /* Başlangıçta görünmez */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Yarı saydam siyah arka plan */
+    z-index: 9998; /* Görselin altındaki arka plan */
+  }
+
+#closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  #closeButton:hover {
+    background-color: darkred;
+  }
