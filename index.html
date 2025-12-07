@@ -12,14 +12,25 @@
 	src: url('digital-7_mono.ttf') format("truetype");
 }
 </style>
-<link href="css/default.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/garden.js"></script>
-<script type="text/javascript" src="js/functions.js"></script>
 
+<link href="css/default.css" type="text/css" rel="stylesheet">
+
+<!-- jQuery mutlaka burada ve ilk sırada -->
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<!-- garden.js ve diğer scriptler -->
+<script type="text/javascript" src="js/garden.js"></script>
 </head>
 
 <body>
+
+<!-- MÜZİK KONTROL BUTONLARI — Solda görünen panel -->
+<div id="musicPlayer">
+    <button id="prevBtn">⏮️</button>
+    <button id="playPauseBtn">⏯️</button>
+    <button id="nextBtn">⏭️</button>
+</div>
+
 
 <div id="mainDiv">
 	<div id="content">
@@ -32,9 +43,8 @@
 			SELAM GÜZELİM !<br />
 			<br>
 			Sanırım her sabah mutlu uyanman için bir yol buldum :]<br />
-			<span class="comments">// Bu sayfaya istediğin zaman girip ikimizin birlikte geçirdiği değerli zamanı öğrenebilirsin. </span><br
-			 />
-			 <br>
+			<span class="comments">// Bu sayfaya istediğin zaman girip ikimizin birlikte geçirdiği değerli zamanı öğrenebilirsin. </span><br />
+			<br>
 			İşte bu alan ikimizin istediğin yerden ulaşabilirsin ;<br />
 			<span class="comments">// Burayı beraber biriktirdiğimiz senin kaydettiğin anılarla doldururuz.</span><br />
 			<br>
@@ -51,17 +61,15 @@
 			<br>
 			<div id="popupOverlay"></div>
 
-		<!-- Görselin açıldığı popup -->
-		<div id="popupImage">
-			<img src="image.jpg" alt="Popup Image">
+			<div id="popupImage">
+				<img src="image.jpg" alt="Popup Image">
 			</div>
 
-
-			<!-- Kalp simgesi, görselin tıklanması -->
 			<span id="heartspan">
-			<a href="javascript:void(0);" onclick="showImage();"><i class="fas fa-heart" id="icon"></i></a>
+				<a href="javascript:void(0);" onclick="showImage();"><i class="fas fa-heart" id="icon"></i></a>
 			</span>
 		</div>
+
 		<div id="loveHeart">
 			<canvas id="garden"></canvas>
 			<div id="words">
@@ -78,10 +86,21 @@
 	</div>
 </div>
 
+
+<!-- Hidden YouTube Player (MUTLAKA OLMALI) -->
+<div id="hiddenPlayer" style="width:0;height:0; overflow:hidden;"></div>
+
+<!-- YouTube API (functions.js’den önce OLMAK ZORUNDA) -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<!-- functions.js en sonda -->
+<script type="text/javascript" src="js/functions.js"></script>
+
 <script type="text/javascript">
 var offsetX = $("#loveHeart").width() / 2;
 var offsetY = $("#loveHeart").height() / 2 - 55;
-var together = new Date();                           // Zaman Ayarı xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+var together = new Date();
 together.setFullYear(2024, 11, 8);
 together.setHours(10);
 together.setMinutes(30);
@@ -91,16 +110,13 @@ together.setMilliseconds(0);
 if (!document.createElement('canvas').getContext) {
 	var msg = document.createElement("div");
 	msg.id = "errorMsg";
-	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	msg.innerHTML = "Your browser doesn't support HTML5!";
 	document.body.appendChild(msg);
-	$("#code").css("display", "none")
-	$("#copyright").css("position", "absolute");
-	$("#copyright").css("bottom", "10px");
 	document.execCommand("stop");
 } else {
 	setTimeout(function () {
 		startHeartAnimation();
-	}, 1000); // ilk Değer 5000 di xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	}, 1000);
 
 	timeElapse(together);
 	setInterval(function () {
@@ -111,5 +127,6 @@ if (!document.createElement('canvas').getContext) {
 	$("#code").typewriter();
 }
 </script>
+
 </body>
 </html>
