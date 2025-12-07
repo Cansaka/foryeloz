@@ -134,42 +134,8 @@ function adjustCodePosition() {
 function showLoveU() {
 	$('#loveu').fadeIn(3000);
 }
-// Görseli göstermek için fonksiyon
-function showImage() {
-	// Popup ve overlay'yi görünür hale getirme
-	document.getElementById('popupImage').style.display = 'flex';
-	document.getElementById('popupOverlay').style.display = 'block';
-	
-	// Popup'ın animasyonla görünmesini sağlamak
-	setTimeout(function() {
-	  document.getElementById('popupImage').style.opacity = '1';
-	  document.getElementById('popupImage').style.transform = 'scale(1)';
-	}, 50); // Animasyonun başlaması için kısa bir gecikme ekliyoruz
 
-	// Kapatma butonu ile popup kapatma
-    document.getElementById('closePopupBtn').onclick = function () {
-    document.getElementById('popupImage').style.opacity = '0';
-    document.getElementById('popupImage').style.transform = 'scale(0.9)';
-    document.getElementById('popupOverlay').style.opacity = '0';
-
-    setTimeout(function () {
-        document.getElementById('popupImage').style.display = 'none';
-        document.getElementById('popupOverlay').style.display = 'none';
-    }, 300);
-  }
-}
   
-  // Görseli kapatmak için fonksiyon
-  document.getElementById('popupOverlay').onclick = function() {
-	// Popup ve overlay'yi gizleme
-	document.getElementById('popupImage').style.opacity = '0';
-	document.getElementById('popupImage').style.transform = 'scale(0.9)';
-	
-	setTimeout(function() {
-	  document.getElementById('popupImage').style.display = 'none';
-	  document.getElementById('popupOverlay').style.display = 'none';
-	}, 300); // Kapanma animasyonunun bitmesini bekliyoruz
-  };
 
 var player;
 var currentTrack = 0;
