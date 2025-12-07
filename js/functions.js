@@ -1,4 +1,4 @@
-﻿
+
 var $window = $(window), gardenCtx, gardenCanvas, $garden, garden;
 var clientWidth = $(window).width();
 var clientHeight = $(window).height();
@@ -158,3 +158,69 @@ function showImage() {
 	  document.getElementById('popupOverlay').style.display = 'none';
 	}, 300); // Kapanma animasyonunun bitmesini bekliyoruz
   };
+
+var player;
+var currentTrack = 0;
+
+var playlist = [
+	"ZtG3eMZL8x8",
+    "9rsA8UmGxwA", // 1. şarkı
+    "BVZOt7D3ZaI",
+	"9rsA8UmGxwA"  // 2. şarkı
+];
+
+// YouTube API hazır olduğunda çalışır
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('hiddenPlayer', {
+        height: '0',
+        width: '0',
+        videoId: playlist[currentTrack],
+        playerVars: {
+            'autoplay': 0,   // ❌ Autoplay artık kapalı
+            'controls': 0,
+            'mute': 0        // ❌ Sessiz başlamak yok
+        },
+        events: {
+            'onReady': onPlayerReady,
+        }
+    });
+}
+
+function onPlayerReady() {
+    // ❌ Artık otomatik oynatma yok, boş bırakıyoruz
+    console.log("Player hazır.");
+}
+
+// Buton Eventleri
+$(document).ready(function () {
+
+    // Play / Pause
+    $("#playPauseBtn").click(function () {
+        // Eğer oynuyorsa durdur
+        if (player.getPlayerState() === 1) {
+            player.pauseVideo();
+        } 
+        // Eğer duruyorsa oynat + sesi aç
+        else {
+            player.unMute();
+            player.playVideo();
+        }
+    });
+
+    // Sonraki şarkı
+    $("#nextBtn").click(function () {
+        currentTrack = (currentTrack + 1) % playlist.length;
+        player.loadVideoById(playlist[currentTrack]);
+        player.unMute();
+        player.playVideo();
+    });
+
+    // Önceki şarkı
+    $("#prevBtn").click(function () {
+        currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+        player.loadVideoById(playlist[currentTrack]);
+        player.unMute();
+        player.playVideo();
+    });
+
+});
