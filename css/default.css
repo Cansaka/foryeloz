@@ -1,4 +1,4 @@
-﻿@keyframes backgroundAnimation {
+@keyframes backgroundAnimation {
     0% {
       background: linear-gradient(to right, #ffcccc, #ffeb99); /* Başlangıç kırmızımsı ve açık sarıya */
     }
@@ -102,3 +102,25 @@
   #closeButton:hover {
     background-color: darkred;
   }
+
+
+  #musicPlayer {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 99999;
+    display: flex;
+    gap: 10px;
+}
+
+#musicPlayer button {
+    padding: 10px 14px;
+    font-size: 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+  
