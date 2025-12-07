@@ -145,7 +145,19 @@ function showImage() {
 	  document.getElementById('popupImage').style.opacity = '1';
 	  document.getElementById('popupImage').style.transform = 'scale(1)';
 	}, 50); // Animasyonun başlaması için kısa bir gecikme ekliyoruz
+
+	// Kapatma butonu ile popup kapatma
+    document.getElementById('closePopupBtn').onclick = function () {
+    document.getElementById('popupImage').style.opacity = '0';
+    document.getElementById('popupImage').style.transform = 'scale(0.9)';
+    document.getElementById('popupOverlay').style.opacity = '0';
+
+    setTimeout(function () {
+        document.getElementById('popupImage').style.display = 'none';
+        document.getElementById('popupOverlay').style.display = 'none';
+    }, 300);
   }
+}
   
   // Görseli kapatmak için fonksiyon
   document.getElementById('popupOverlay').onclick = function() {
@@ -163,10 +175,9 @@ var player;
 var currentTrack = 0;
 
 var playlist = [
-	"ZtG3eMZL8x8",
-    "9rsA8UmGxwA", // 1. şarkı
-    "BVZOt7D3ZaI",
-	"9rsA8UmGxwA"  // 2. şarkı
+	"ZtG3eMZL8x8",     //Erol 
+    "BVZOt7D3ZaI",      // Selda Bağcan - Niye Cattin Kaslarini
+	"LtKeQYoeGBw"    // To şiya
 ];
 
 // YouTube API hazır olduğunda çalışır
@@ -194,7 +205,7 @@ function onPlayerReady() {
 
 // Buton Eventleri
 $(document).ready(function () {
-	
+
 	setTimeout(() => {
     $("#playPauseBtn").click();  // bir kerelik otomatik başlat
 }, 3000);
@@ -234,8 +245,9 @@ $(document).ready(function () {
 });
 
 var trackNames = [
-    "Canlı Şarkı 1",
-    "Canlı Şarkı 2"
+    "Erol Evgin - Bir De Bana Sor ",
+    "Selda Bağcan - Niye Cattin Kaslarini",
+	"Erdoğan Emir - To Şiya"
 ];
 function updateTrackName() {
     document.getElementById("trackName").innerText = "Parça: " + trackNames[currentTrack];
